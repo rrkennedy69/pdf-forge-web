@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>PDF Forge</title>
+    <meta name="description" content="PDF Forge: view, edit, sign, fill, merge and convert PDFs entirely in your browser. Files never leave your device." />
+    <meta name="theme-color" content="#1c1c20" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="PDF Forge" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    
+<script type="module">
+import init, * as bindings from './pdfcraft-web-d8a633298ac0569e.js';
+const wasm = await init({ module_or_path: './pdfcraft-web-e068a05107fac390_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+    
+    
+    
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #f1f1f3; overscroll-behavior: none; }
+      body { position: fixed; inset: 0; }
+      /* Keep the app clear of notches and home indicators. */
+      canvas#pdfcraft {
+        position: absolute; display: block; outline: none; touch-action: none;
+        top: env(safe-area-inset-top, 0px); left: env(safe-area-inset-left, 0px);
+        width: calc(100% - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        height: calc(100% - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+      }
+      #loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column;
+        font: 15px system-ui, sans-serif; color: #666; gap: 12px; pointer-events: none; }
+      #loading .mark { width: 64px; height: 64px; border-radius: 14px; background: #f26b1d; color: #fff; display: flex; align-items: center; justify-content: center; font: 700 26px system-ui, sans-serif; }
+      @media (prefers-color-scheme: dark) { html, body { background: #19191c; } #loading { color: #aaa; } }
+    </style>
+  <link rel="modulepreload" href="./pdfcraft-web-d8a633298ac0569e.js" crossorigin="anonymous" integrity="sha384-vg6bmGH2D9z25Sg8ZodjCnsjCUtHXGC0fb2m65f3t0a0kq9HbHCrpBcvAYs7/rZV"><link rel="modulepreload" href="./snippets/eframe-d31a8450ea12dfc1/inline0.js" crossorigin="anonymous" integrity="sha384-uPZQ72BwgZ4v7Km6+UIFbkDDlt7ShGEsAVEHVN/+wZSGFhItJZB83iKMFQXauTSs"><link rel="preload" href="./pdfcraft-web-e068a05107fac390_bg.wasm" crossorigin="anonymous" integrity="sha384-4RDleXuHOOe0yHpsvK5grfmOZx1SRGQNW60lj+bS5m0J2jkb3pt/RFr8N/A4OkEL" as="fetch" type="application/wasm"></head>
+  <body>
+    <div id="loading"><div class="mark">PF</div><div>Loading PDF Forge…</div></div>
+    <canvas id="pdfcraft"></canvas>
+    <script>
+      // Hide the splash once the app draws.
+      new MutationObserver(function (_, obs) {
+        var c = document.getElementById('pdfcraft');
+        if (c && c.width > 0) { var l = document.getElementById('loading'); if (l) l.remove(); obs.disconnect(); }
+      }).observe(document.getElementById('pdfcraft'), { attributes: true });
+      // Offline support (needs https or localhost).
+      if ('serviceWorker' in navigator && !/[?&]nosw\b/.test(location.search)) {
+        window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function (e) { console.warn('SW', e); }); });
+      }
+    </script>
+  </body>
+</html>

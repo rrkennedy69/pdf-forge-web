@@ -1,0 +1,20 @@
+{
+  "name": "PDF Forge",
+  "short_name": "PDF Forge",
+  "description": "View, edit, sign, fill, merge and convert PDFs in your browser. Files stay on your device.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#1c1c20",
+  "theme_color": "#1c1c20",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "file_handlers": [
+    { "action": "./", "accept": { "application/pdf": [".pdf"] } }
+  ]
+}
