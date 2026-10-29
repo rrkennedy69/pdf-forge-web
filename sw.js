@@ -1,7 +1,7 @@
 // PDF Forge service worker: precache the app shell, then serve it offline.
 // PRECACHE is filled in by build.sh after `trunk build`.
-const VERSION = '49e67b741164';
-const PRECACHE = ['LICENSE-APACHE','LICENSE-DejaVu.txt','LICENSE-MIT','NOTICE','icons/apple-touch-icon.png','icons/favicon-32.png','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','index.html','manifest.webmanifest','pdfcraft-web-d8a633298ac0569e.js','pdfcraft-web-e068a05107fac390_bg.wasm','snippets/eframe-d31a8450ea12dfc1/inline0.js'];
+const VERSION = '947c89692cc9';
+const PRECACHE = ['LICENSE-APACHE','LICENSE-DejaVu.txt','LICENSE-MIT','NOTICE','icons/apple-touch-icon.png','icons/favicon-32.png','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','index.html','manifest.webmanifest','pdfcraft-web-7530865e313e3cba.js','pdfcraft-web-9c4914656cf9f642_bg.wasm','snippets/eframe-d31a8450ea12dfc1/inline0.js'];
 const CACHE = 'pdfforge-' + VERSION;
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(['./', ...PRECACHE])).then(() => self.skipWaiting()));

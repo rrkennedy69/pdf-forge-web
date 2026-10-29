@@ -15,8 +15,8 @@
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
     
 <script type="module">
-import init, * as bindings from './pdfcraft-web-d8a633298ac0569e.js';
-const wasm = await init({ module_or_path: './pdfcraft-web-e068a05107fac390_bg.wasm' });
+import init, * as bindings from './pdfcraft-web-7530865e313e3cba.js';
+const wasm = await init({ module_or_path: './pdfcraft-web-9c4914656cf9f642_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -44,7 +44,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
       #loading .mark { width: 64px; height: 64px; border-radius: 14px; background: #f26b1d; color: #fff; display: flex; align-items: center; justify-content: center; font: 700 26px system-ui, sans-serif; }
       @media (prefers-color-scheme: dark) { html, body { background: #19191c; } #loading { color: #aaa; } }
     </style>
-  <link rel="modulepreload" href="./pdfcraft-web-d8a633298ac0569e.js" crossorigin="anonymous" integrity="sha384-vg6bmGH2D9z25Sg8ZodjCnsjCUtHXGC0fb2m65f3t0a0kq9HbHCrpBcvAYs7/rZV"><link rel="modulepreload" href="./snippets/eframe-d31a8450ea12dfc1/inline0.js" crossorigin="anonymous" integrity="sha384-uPZQ72BwgZ4v7Km6+UIFbkDDlt7ShGEsAVEHVN/+wZSGFhItJZB83iKMFQXauTSs"><link rel="preload" href="./pdfcraft-web-e068a05107fac390_bg.wasm" crossorigin="anonymous" integrity="sha384-4RDleXuHOOe0yHpsvK5grfmOZx1SRGQNW60lj+bS5m0J2jkb3pt/RFr8N/A4OkEL" as="fetch" type="application/wasm"></head>
+  <link rel="modulepreload" href="./pdfcraft-web-7530865e313e3cba.js" crossorigin="anonymous" integrity="sha384-KGymcKmh6/rdNZP6/1KeqnAQB1ThGNcD0sy/4bSYPqgw9P1C2ssYbeL0JD8tMqD7"><link rel="modulepreload" href="./snippets/eframe-d31a8450ea12dfc1/inline0.js" crossorigin="anonymous" integrity="sha384-uPZQ72BwgZ4v7Km6+UIFbkDDlt7ShGEsAVEHVN/+wZSGFhItJZB83iKMFQXauTSs"><link rel="preload" href="./pdfcraft-web-9c4914656cf9f642_bg.wasm" crossorigin="anonymous" integrity="sha384-+P7oWBc8lt1zcq+AsI8LPMnLZr9h/PuNvByE3B02RKEUK6t6Lwwm6fW3MRi34kI+" as="fetch" type="application/wasm"></head>
   <body>
     <div id="loading"><div class="mark">PF</div><div>Loading PDF Forge…</div></div>
     <canvas id="pdfcraft"></canvas>
